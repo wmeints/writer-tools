@@ -10,8 +10,6 @@ export function getCurrentDocumentContent(editor: vscode.TextEditor) {
   return content;
 }
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   let generateConclusionCmd = vscode.commands.registerCommand(
     "writer-tools.generateConclusion",
@@ -31,16 +29,25 @@ export function activate(context: vscode.ExtensionContext) {
 
       const content = getCurrentDocumentContent(editor);
 
-      apiClient
-        .generateConclusion(content || "")
-        .then((conclusion) => {
-          editor.edit((editBuilder) => {
-            editBuilder.insert(editor.selection.end, conclusion);
-          });
-        })
-        .catch((error) => {
-          vscode.window.showErrorMessage(error.message);
-        });
+      vscode.window.withProgress(
+        {
+          location: vscode.ProgressLocation.Window,
+          title: "Generating conclusion...",
+          cancellable: false,
+        },
+        () => {
+          return apiClient
+            .generateConclusion(content || "")
+            .then((conclusion) => {
+              editor.edit((editBuilder) => {
+                editBuilder.insert(editor.selection.end, conclusion);
+              });
+            })
+            .catch((error) => {
+              vscode.window.showErrorMessage(error.message);
+            });
+        }
+      );
     }
   );
 
@@ -62,18 +69,27 @@ export function activate(context: vscode.ExtensionContext) {
 
       const content = getCurrentDocumentContent(editor);
 
-      apiClient
-        .generateIntroduction(content || "")
-        .then((introduction) => {
-          console.log(introduction);
+      vscode.window.withProgress(
+        {
+          location: vscode.ProgressLocation.Window,
+          title: "Generating introduction...",
+          cancellable: false,
+        },
+        () => {
+          return apiClient
+            .generateIntroduction(content || "")
+            .then((introduction) => {
+              console.log(introduction);
 
-          editor.edit((editBuilder) => {
-            editBuilder.insert(editor.selection.end, introduction);
-          });
-        })
-        .catch((error) => {
-          vscode.window.showErrorMessage(error.message);
-        });
+              editor.edit((editBuilder) => {
+                editBuilder.insert(editor.selection.end, introduction);
+              });
+            })
+            .catch((error) => {
+              vscode.window.showErrorMessage(error.message);
+            });
+        }
+      );
     }
   );
 
