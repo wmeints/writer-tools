@@ -14,8 +14,25 @@
   "contributes": {
     "commands": [
       {
-        "command": "writer-tools.helloWorld",
-        "title": "Hello World"
+        "command": "writer-tools.generateConclusion",
+        "title": "Writer Tools: Generate Conclusion"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Writer tools",
+        "properties": {
+          "writer-tools.apiKey": {
+            "type": "string",
+            "default": "",
+            "description": "API key for the Writer Tools API"
+          },
+          "writer-tools.endpoint": {
+            "type": "string",
+            "default": "",
+            "description": "The endpoint for the Writer Tools API"
+          }
+        }
       }
     ]
   },
