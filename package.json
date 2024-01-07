@@ -16,6 +16,10 @@
       {
         "command": "writer-tools.generateConclusion",
         "title": "Writer Tools: Generate Conclusion"
+      },
+      {
+        "command": "writer-tools.generateIntroduction",
+        "title": "Writer Tools: Generate Introduction"
       }
     ],
     "configuration": [
@@ -25,12 +29,12 @@
           "writer-tools.apiKey": {
             "type": "string",
             "default": "",
-            "description": "API key for the Writer Tools API"
+            "description": "Specifies the API key for the Writer Tools API"
           },
           "writer-tools.endpoint": {
             "type": "string",
-            "default": "",
-            "description": "The endpoint for the Writer Tools API"
+            "default": "http://localhost:5000",
+            "description": "Specifies the URL for the Writer Tools API"
           }
         }
       }
@@ -45,14 +49,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.5"
   }
 }
