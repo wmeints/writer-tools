@@ -1,0 +1,7 @@
+Given the following article:
+--------------------------------------------------------------------------------
+{content}
+--------------------------------------------------------------------------------
+
+Write a conclusion paragraph summarizing the article's content and the key takeaway.
+Use an active voice. Keep it informal for a business audience.

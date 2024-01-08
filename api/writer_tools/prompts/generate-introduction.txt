@@ -1,0 +1,7 @@
+Given the following article:
+--------------------------------------------------------------------------------
+{content}
+--------------------------------------------------------------------------------
+
+Write an introduction paragraph explaining the article's content and what the reader will learn from reading the article.
+Use an active voice. Keep it informal for a business audience.
